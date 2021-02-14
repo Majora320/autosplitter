@@ -1,0 +1,10 @@
+[package]
+name = "auto_splitter"
+version = "0.0.0"
+authors = ["Moses Miller <Majora320@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+native-dialog = "0.5"
+simplelog = "0.9"
+log = "0.4"
