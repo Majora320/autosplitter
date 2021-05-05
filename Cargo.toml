@@ -7,4 +7,5 @@ edition = "2018"
 [dependencies]
 native-dialog = "0.5"
 simplelog = "0.9"
+regex = "1.5"
 log = "0.4"

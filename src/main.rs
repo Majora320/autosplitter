@@ -1,5 +1,6 @@
 use log::{debug, info};
 use native_dialog::FileDialog;
+use regex::Regex;
 use simplelog::{Config, LevelFilter, WriteLogger};
 use std::env::temp_dir;
 use std::ffi::OsStr;
@@ -247,15 +248,13 @@ fn read_line() -> String {
 }
 
 fn parse_duration_seconds(probe_output: &str) -> Option<f64> {
-    let duration_line = probe_output.lines().nth(1)?;
-    // Look for Duration: xx:xx:xx.xx
-    let index = duration_line.find(':')?;
-    let duration = &duration_line[index + 2..index + 13];
+    let re = Regex::new(r"Duration: (\d\d):(\d\d):(\d\d).(\d\d)").unwrap();
+    let captures = re.captures(probe_output)?;
 
-    let hours: f64 = duration[0..2].parse().ok()?;
-    let minutes: f64 = duration[3..5].parse().ok()?;
-    let seconds: f64 = duration[6..8].parse().ok()?;
-    let fractional: f64 = duration[9..11].parse().ok()?;
+    let hours: f64 = captures[1].parse().ok()?;
+    let minutes: f64 = captures[2].parse().ok()?;
+    let seconds: f64 = captures[3].parse().ok()?;
+    let fractional: f64 = captures[4].parse().ok()?;
 
     Some((hours * 360.) + (minutes * 60.) + seconds + (fractional / 100.))
 }
