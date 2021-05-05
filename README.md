@@ -1,5 +1,5 @@
 # Autosplitter
-Autosplitter is a simple utility to automatically split audio files for use in Celeste's cassette rooms.
+Autosplitter is a simple utility to automatically split audio files for use in Celeste's cassette rooms. You can download a releast build from the [releases page](https://github.com/Majora320/autosplitter/releases).
 
 Some antivirus programs, including Avast, may block ffmpeg, preventing autosplitter from running properly.
 If you have an antivirus program installed please add an exemption to the file `%TEMP%\ffmpeg.exe`.
