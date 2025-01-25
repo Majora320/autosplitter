@@ -26,7 +26,7 @@ function bulkadd() {
     }
 
     for (var i = 0; i < files.length; i++) {
-        var sound = track.addSound(parameter, 'SingleSound', i + 1, 1);
+        var sound = track.addSound(parameter, 'SingleSound', i + 1, 0.5);
         sound.audioFile = files[i];
     }
 }
